@@ -31,7 +31,6 @@ import (
   "bufio"
   "fmt"
   "io"
-  //"io/ioutil"
   "os"
 )
 
@@ -39,6 +38,14 @@ func check(err error)  {
   if err != nil && err != io.EOF {
       panic(err)
   }
+}
+
+func isJPEG(fileBlock []byte) (result bool)  {
+  result = false
+  if (fileBlock[0] == 0xff && fileBlock[1] == 0xd8 && fileBlock[2] == 0xff && (fileBlock[3] == 0xe0 || fileBlock[3] == 0x0e1)) {
+    result = true
+  }
+  return result
 }
 
 func main() {
@@ -70,7 +77,7 @@ func main() {
     check(err)
 
     // 4. Check if first 4 bytes match header of jpeg file
-    if fileBlock[0] == 0xff && fileBlock[1] == 0xd8 && fileBlock[2] == 0xff && (fileBlock[3] == 0xe0 || fileBlock[3] == 0xe1) {
+    if isJPEG(fileBlock) {
          // 5. If match: Close last recovered image file (if it exists)
          writer.Flush()
 
