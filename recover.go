@@ -80,6 +80,7 @@ func main() {
     if isJPEG(fileBlock) {
          // 5. If match: Close last recovered image file (if it exists)
          writer.Flush()
+         fo.Close()
 
          // 6. If match: Write to a new recovered image file
          fileName = fmt.Sprintf("%03d.jpg", fileNumber)
