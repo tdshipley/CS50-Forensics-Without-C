@@ -11,7 +11,7 @@
 #   * Trailing zeros in recovered images is OK
 #   * It is OK to hardcode the path to the file
 #
-# Purpose of redoing this exercise in Go is to learn a little more about the
+# Purpose of redoing this exercise in Ruby is to learn a little more about the
 # language by going beyond a Hello World application as a first attempt.
 #
 #   Resources used:
