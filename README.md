@@ -13,10 +13,10 @@ to programming languages than hello world.
 ### Languages Present
 
 * Go
+* Ruby
 
 ### Languages Planned
 
 * Haskell
-* Ruby
 * F#
 * Rust
