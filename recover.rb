@@ -43,18 +43,14 @@ until file.eof?
   block = file.read 512
 
   if isJPEG? block
-    unless out_file.nil?
-      out_file.close
-    end
+    out_file.close unless out_file.nil?
 
     filenumber = filenumber.next
     puts "#{getFilename(filenumber)}.jpeg"
     out_file = File.open("#{getFilename(filenumber)}.jpeg", 'w')
     out_file.write block
   else
-    unless out_file.nil?
-      out_file.write block
-    end
+    out_file.write block unless out_file.nil?
   end
 end
 
