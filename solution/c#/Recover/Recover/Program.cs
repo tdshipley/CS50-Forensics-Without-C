@@ -61,7 +61,7 @@ namespace Recover
                 while (file.Read(block, 0, block.Length) > 0)
                 {
                     //7. If the block contains the header of a jpeg
-                    if(IsJepgMatch(block))
+                    if(IsJpegMatch(block))
                     {
                         //8. Close any image currently being written too.
                         if (outputFile != null)
@@ -98,7 +98,7 @@ namespace Recover
         /// </summary>
         /// <param name="block">Array of bytes representing a block of data</param>
         /// <returns></returns>
-        private static bool IsJepgMatch(byte[] block)
+        private static bool IsJpegMatch(byte[] block)
         {
             bool match = false;
             if(block[0].Equals(0xff) &&
