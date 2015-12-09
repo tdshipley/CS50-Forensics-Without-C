@@ -21,7 +21,8 @@ using System.Threading.Tasks;
  It also serves as a good language to compare against others I am less familar in.
 
    Resources used:
-     * 
+    * http://stackoverflow.com/questions/2030847/best-way-to-read-a-large-file-into-a-byte-array-in-c 
+    * https://msdn.microsoft.com/en-us/library/system.io.file.readallbytes(v=vs.110).aspx
 */
 
 namespace Recover
@@ -30,6 +31,22 @@ namespace Recover
     {
         static void Main(string[] args)
         {
+        }
+
+        private static bool IsJepgMatch(byte[] block)
+        {
+            bool match = false;
+            byte[] jpegPartialSig = new byte[] { 0xFF, 0xD8, 0xFF };
+            if(block[0] == jpegPartialSig[0] &&
+               block[1] == jpegPartialSig[1] &&
+               block[2] == jpegPartialSig[2])
+            {
+                if(block[3] == byte.Parse("0xe0") || block[3] == byte.Parse("0xe1"))
+                {
+                    match = true;
+                }
+            }
+            return match;
         }
     }
 }
