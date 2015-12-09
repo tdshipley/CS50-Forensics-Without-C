@@ -37,7 +37,7 @@ filenumber = 0
 out_file = nil
 
 # Open the file
-file = File.open '../card.raw'
+file = File.open '../../card.raw'
 
 until file.eof?
   block = file.read 512
