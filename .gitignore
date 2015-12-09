@@ -1,3 +1,15 @@
+# .net files
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+[Bb]in/
+[Oo]bj/
+
+*.suo
+*.user
+*.sln.docstates
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
