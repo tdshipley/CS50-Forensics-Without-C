@@ -12,11 +12,6 @@ to programming languages than hello world.
 
 ### Languages Present
 
+* C#
 * Go
 * Ruby
-
-### Languages Planned
-
-* Haskell
-* F#
-* Rust
