@@ -50,7 +50,7 @@ func isJPEG(fileBlock []byte) (result bool)  {
 
 func main() {
   // 1. Open the file
-  file, err := os.Open("card.raw")
+  file, err := os.Open("../card.raw")
   check(err)
   defer func() {
         check(err)
