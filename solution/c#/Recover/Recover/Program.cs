@@ -23,6 +23,7 @@ using System.Threading.Tasks;
    Resources used:
     * http://stackoverflow.com/questions/2030847/best-way-to-read-a-large-file-into-a-byte-array-in-c 
     * https://msdn.microsoft.com/en-us/library/system.io.file.readallbytes(v=vs.110).aspx
+    * https://msdn.microsoft.com/en-us/library/kt8btd95(v=vs.110).aspx
 */
 
 namespace Recover
@@ -33,19 +34,25 @@ namespace Recover
         {
         }
 
+        /// <summary>
+        /// Given a block of at least four bytes read the first four
+        /// to see if the block contains the start of a jpeg
+        /// </summary>
+        /// <param name="block">Array of bytes representing a block of data</param>
+        /// <returns></returns>
         private static bool IsJepgMatch(byte[] block)
         {
             bool match = false;
-            byte[] jpegPartialSig = new byte[] { 0xFF, 0xD8, 0xFF };
-            if(block[0] == jpegPartialSig[0] &&
-               block[1] == jpegPartialSig[1] &&
-               block[2] == jpegPartialSig[2])
+            if(block[0].Equals(0xFF) &&
+               block[1].Equals(0xD8) &&
+               block[2].Equals(0xFF))
             {
-                if(block[3] == byte.Parse("0xe0") || block[3] == byte.Parse("0xe1"))
+                if(block[3].Equals(0xE0) || block[3].Equals(0xE1))
                 {
                     match = true;
                 }
             }
+
             return match;
         }
     }
