@@ -14,4 +14,5 @@ to programming languages than hello world.
 
 * C#
 * Go
+* Python
 * Ruby
